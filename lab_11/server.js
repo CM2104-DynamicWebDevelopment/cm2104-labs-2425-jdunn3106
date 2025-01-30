@@ -16,7 +16,7 @@ app.get('/joke', function(req, res){
 });
 
 app.get('/add', function(req, res){
-    var x = erq.query.x;
+    var x = req.query.x;
     var y = req.query.y;
     res.send("X + Y="+(x+y));
 });
