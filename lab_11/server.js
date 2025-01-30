@@ -28,9 +28,9 @@ app.get('/calc', function(req, res){
     
     if (operator = "add") {
         res.send("X + Y="+(x+y));
-    } if (operator = "sub") {
+    } else if (operator = "sub") {
         res.send("X - Y="+(x-y));
-    } if (operator = "mul") {
+    } else if (operator = "mul") {
         res.send("X * Y="+(x*y));
     } else {
         res.send("X/Y="+(x/y));
