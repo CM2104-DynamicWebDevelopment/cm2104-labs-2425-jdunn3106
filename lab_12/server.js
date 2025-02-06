@@ -33,7 +33,7 @@ spotifyApi.clientCredentialsGrant().then(
 );
 
 async function getTracks(searchterm, res) {
-    spotifyApu.searchTracks(searchterm)
+    spotifyApi.searchTracks(searchterm)
     .then(function (data) {
         res.send(json.stringify(data.body));
     }, function (err) {
