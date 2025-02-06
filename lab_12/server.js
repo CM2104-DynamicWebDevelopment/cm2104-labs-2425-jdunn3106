@@ -12,6 +12,11 @@ app.get('/', function(req, res){
     res.send("Hello world! by express");
 });
 
+//route for love in tracks, artists and albums
+app.get('/searchLove', function (req, res) {
+    getTracks('love', res);
+});
+
 spotifyApi.clientCredentialsGrant().then(
     function(data) {
         console.log('The access token expires in ' + data.body['expires_in']);
@@ -26,5 +31,14 @@ spotifyApi.clientCredentialsGrant().then(
         );
     }
 );
+
+async function getTracks(searchterm, res) {
+    spotifyApu.searchTracks(searchterm)
+    .then(function (data) {
+        res.send(json.stringify(data.body));
+    }, function (err) {
+        console.error(err);
+    });
+}
 
 app.listen(8080);
