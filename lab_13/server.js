@@ -12,6 +12,8 @@ app.use(express.static('public'))
 
     var db;
 
+app.use(express.urlencoded({extended:true}))
+
 //run the connect method.
 connectDB();
 
@@ -36,4 +38,12 @@ app.get('/all', function (req, res) {
         }
         res.send(output);
     });
+});
+
+app.post('/quotes', function (req, res) {
+    db.collection('quotes').insertOne(req.body, function (err, result) {
+        if (err) throw err;
+        console.log('saved to database')
+        res.redirect('/')
+    })
 });
